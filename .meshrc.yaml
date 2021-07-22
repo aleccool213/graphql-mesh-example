@@ -1,0 +1,15 @@
+sources:
+  - name: SpaceX
+    handler:
+      graphql:
+        endpoint: https://api.spacex.land/graphql/
+        method: POST
+  - name: Mongoose
+    handler:
+      mongoose:
+        connectionString: mongodb://admin:password@localhost:27017/test?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false
+        models:
+          - name: User
+            path: ./src/models.js#User
+          - name: LaunchesAttended
+            path: ./src/models.js#LaunchesAttended

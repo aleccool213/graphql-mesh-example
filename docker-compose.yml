@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: "mongo:latest"
+    volumes:
+      - ./volumes/mongodb:/data/db
+    ports:
+      - 27017:27017
+    command: mongod
+    healthcheck:
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      test: ["CMD", "mongo", "ping"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: test
